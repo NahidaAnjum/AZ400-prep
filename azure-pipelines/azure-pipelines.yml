@@ -1,0 +1,14 @@
+
+#### **2️⃣ `azure-pipelines/azure-pipelines.yml` (Basic Azure Pipeline)**
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - script: echo "Hello from Azure DevOps Pipeline!"
+    displayName: 'Run a simple script'

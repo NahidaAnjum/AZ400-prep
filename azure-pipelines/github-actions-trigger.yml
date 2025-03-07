@@ -1,0 +1,17 @@
+name: Trigger Azure DevOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure DevOps Pipeline
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_PAT }}" \
+               -H "Content-Type: application/json" \
+               -d '{"definitionId": 1}' \
+               "https://dev.azure.com/{organization}/{project}/_apis/build/builds?api-version=6.0"
